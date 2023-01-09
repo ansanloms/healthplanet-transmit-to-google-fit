@@ -1,4 +1,5 @@
 import * as path from "std/path/mod.ts";
+import * as fs from "std/fs/mod.ts";
 import { build, stop } from "esbuild/mod.js";
 import GasPlugin from "esbuild-gas-plugin/mod.ts";
 import httpFetch from "esbuild_plugin_http_fetch/index.js";
@@ -16,8 +17,9 @@ stop();
 
 await Promise.all([
   "appsscript.json",
+  "templates",
 ].map((file) =>
-  Deno.copyFile(
+  fs.copy(
     path.join(__dirname, `../src/${file}`),
     path.join(__dirname, `../dist/${file}`),
   )
