@@ -1,36 +1,35 @@
 {
   "lint": {
-    "files": {
-      "exclude": [
-        "README.md",
-        ".clasp.json",
-        "dist/"
-      ]
-    }
+    "exclude": [
+      "dist/",
+      "types/google-apps-script",
+      "types/google-apps-script-oauth2"
+    ]
   },
   "fmt": {
-    "files": {
-      "exclude": [
-        "README.md",
-        ".clasp.json",
-        "dist/"
-      ]
-    }
+    "exclude": [
+      "dist/",
+      "types/google-apps-script",
+      "types/google-apps-script-oauth2"
+    ]
+  },
+  "imports": {
+    "std/": "https://deno.land/std@0.211.0/",
+    "esbuild/": "https://deno.land/x/esbuild@v0.19.11/",
+    "esbuild-gas-plugin": "https://esm.sh/esbuild-gas-plugin@0.8.0/",
+    "esbuild_plugin_http_fetch/": "https://deno.land/x/esbuild_plugin_http_fetch@v1.0.3/",
+    "octokit": "https://esm.sh/octokit@3.1.2"
+  },
+  "tasks": {
+    "build": "deno run --allow-read --allow-env --allow-net --allow-write --allow-run ./bin/build.ts",
+    "clean": "deno run --allow-read --allow-write ./bin/clean.ts",
+    "convert": "deno run --allow-read --allow-env --allow-net --allow-write --allow-run ./bin/convert.ts"
   },
   "compilerOptions": {
     "types": [
       "./types/global.d.ts",
-      "https://raw.githubusercontent.com/ansanloms/deno-gas-types/v1.0.56/types/index.d.ts",
-      "https://raw.githubusercontent.com/ansanloms/deno-gas-oauth2-types/v38.0.0/types/index.d.ts"
+      "./types/google-apps-script/index.d.ts",
+      "./types/google-apps-script-oauth2/index.d.ts"
     ]
-  },
-  "importMap": "import_map.json",
-  "tasks": {
-    "build": "deno run --allow-read --allow-env --allow-net --allow-write --allow-run ./bin/build.ts",
-    "clasp": "deno run --allow-read --allow-env --allow-net --allow-write --allow-sys --allow-run npm:@google/clasp@2.4.2",
-    "create": "deno run --allow-read --allow-run --allow-write ./bin/create.ts",
-    "clone": "deno run --allow-read --allow-run --allow-write ./bin/clone.ts",
-    "clean": "deno run --allow-read --allow-write ./bin/clean.ts",
-    "deploy": "deno task clean && deno task build && deno task clasp push"
   }
 }
