@@ -2,6 +2,7 @@
   "lint": {
     "exclude": [
       "dist/",
+      ".clasp.json",
       "types/google-apps-script",
       "types/google-apps-script-oauth2"
     ]
@@ -9,6 +10,7 @@
   "fmt": {
     "exclude": [
       "dist/",
+      ".clasp.json",
       "types/google-apps-script",
       "types/google-apps-script-oauth2"
     ]
@@ -21,8 +23,10 @@
     "octokit": "https://esm.sh/octokit@3.1.2"
   },
   "tasks": {
+    "clasp": "deno run -A npm:@google/clasp@2.4.2",
     "build": "deno run --allow-read --allow-env --allow-net --allow-write --allow-run ./bin/build.ts",
     "clean": "deno run --allow-read --allow-write ./bin/clean.ts",
+    "deploy": "deno task clean && deno task build && deno task clasp push",
     "convert": "deno run --allow-read --allow-env --allow-net --allow-write --allow-run ./bin/convert.ts"
   },
   "compilerOptions": {
