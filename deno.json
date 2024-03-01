@@ -14,8 +14,8 @@
     ]
   },
   "imports": {
-    "std/": "https://deno.land/std@0.211.0/",
-    "esbuild/": "https://deno.land/x/esbuild@v0.19.11/",
+    "std/": "https://deno.land/std@0.218.2/",
+    "esbuild/": "https://deno.land/x/esbuild@v0.20.1/",
     "esbuild-gas-plugin": "https://esm.sh/esbuild-gas-plugin@0.8.0/",
     "esbuild_plugin_http_fetch/": "https://deno.land/x/esbuild_plugin_http_fetch@v1.0.3/",
     "octokit": "https://esm.sh/octokit@3.1.2"
